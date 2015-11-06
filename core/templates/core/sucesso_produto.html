@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Produto Cadastrado| {{ block.super }}
+{% endblock titulo %}
+
+{% block row %}
+<p>Produto Cadastrado com Sucesso</p>
+<input type="button" class="btn btn-primary" name="cancel" value="Inicio" onclick="window.location='{% url 'core:home' %}' " />
+
+{% endblock row %}

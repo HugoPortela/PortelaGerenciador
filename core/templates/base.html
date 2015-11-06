@@ -1,0 +1,190 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>{% block titulo %}Portela Gerenciador{% endblock titulo %}</title>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/liveTable.css" %}">
+  <script type="text/javascript" src="{% static "js/jquery-2.1.4.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/bootstrap.js" %}"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'core:home' %}">Portela Gerenciador</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{% url 'core:home' %}">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="{% url 'core:cadastrousuario' %}">Cadastre-se</a></li>
+        <li><a href="{% url 'core:cadastroproduto' %}">Cadastrar Produtos</a></li>
+        {% if not user.is_authenticated %}
+          <li><a href="">Entrar</a></li>
+        {% endif %}
+        {% if user.is_authenticated %}
+          <li><a href="">Sair</a></li>
+        {% endif %}
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="container">
+  <div class="row">
+    {% block row %}
+    <h1>Produtos Em Estoque</h1>
+<style>
+    h1 {
+        text-align: center;
+    }
+     {
+        text-align: center;
+    }
+    </style>
+    <h1>Roupas Femininas</h1>
+<div class="CSSTableGenerator" >
+<table>
+
+
+        <tr>
+            <td>Produto</td>
+            <td>Referência</td>
+            <td>Categoria</td>
+            <td>Preço</td>
+            <td>Quantidade em Estoque</td>
+        </tr>
+
+    <tr>
+    {%for p in produtos%}
+        {%if p.categoria == "RF" %}
+            <tr>
+                <td>{{p.nome}}</td>
+                <td>{{p.referencia}}</td>
+                <td>{{p.categoria}}</td>
+                <td>{{p.preco}}</td>
+                <td>{{p.quantidade}}</td>
+
+            </tr>
+        {%endif%}
+    {%endfor%}
+    </tr>
+    </tbody>
+    </table>
+  </div>
+
+
+
+  <h1>Roupas Masculinas</h1>
+<div class="CSSTableGenerator" >
+<table>
+
+
+        <tr>
+            <td>Produto</td>
+            <td>Referência</td>
+            <td>Categoria</td>
+            <td>Preço</td>
+            <td>Quantidade em Estoque</td>
+        </tr>
+
+    <tr>
+    {%for p in produtos%}
+        {%if p.categoria == "RM" %}
+            <tr>
+                <td>{{p.nome}}</td>
+                <td>{{p.referencia}}</td>
+                <td>{{p.categoria}}</td>
+                <td>{{p.preco}}</td>
+                <td>{{p.quantidade}}</td>
+
+            </tr>
+        {%endif%}
+    {%endfor%}
+    </tr>
+    </tbody>
+    </table>
+  </div>
+
+
+<h1>Moda Intima</h1>
+<div class="CSSTableGenerator" >
+<table>
+
+
+        <tr>
+            <td>Produto</td>
+            <td>Referência</td>
+            <td>Categoria</td>
+            <td>Preço</td>
+            <td>Quantidade em Estoque</td>
+        </tr>
+
+    <tr>
+    {%for p in produtos%}
+        {%if p.categoria == "MI" %}
+            <tr>
+                <td>{{p.nome}}</td>
+                <td>{{p.referencia}}</td>
+                <td>{{p.categoria}}</td>
+                <td>{{p.preco}}</td>
+                <td>{{p.quantidade}}</td>
+
+            </tr>
+        {%endif%}
+    {%endfor%}
+    </tr>
+    </tbody>
+    </table>
+  </div>
+
+<h1>Moda Infantil</h1>
+<div class="CSSTableGenerator" >
+<table>
+
+
+        <tr>
+            <td>Produto</td>
+            <td>Referência</td>
+            <td>Categoria</td>
+            <td>Preço</td>
+            <td>Quantidade em Estoque</td>
+        </tr>
+
+    <tr>
+    {%for p in produtos%}
+        {%if p.categoria == "IN" %}
+            <tr>
+                <td>{{p.nome}}</td>
+                <td>{{p.referencia}}</td>
+                <td>{{p.categoria}}</td>
+                <td>{{p.preco}}</td>
+                <td>{{p.quantidade}}</td>
+
+            </tr>
+        {%endif%}
+    {%endfor%}
+    </tr>
+    </tbody>
+    </table>
+  </div>
+
+
+    {% endblock row %}
+  </div>
+</div>
+</body>
+</html>

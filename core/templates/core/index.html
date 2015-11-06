@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block titulo %}
+Produtos {{ block.super }}
+{% endblock titulo %}
+
+
+{% block row %}
+
+<h1>Produtos</h1>
+<style>
+    h1 {
+        text-align: center;
+    }
+     {
+        text-align: center;
+    }
+    </style>
+    <h1>Roupas Femininas</h1>
+<table border="1" style="width:50%" align= "center">
+    <caption></caption>
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Referência</th>
+            <th>Categoria</th>
+        </tr>
+    </thead>
+    <tbody>
+    {%for p in produtos%}
+        {%if p.categoria == "RF" %}
+            <tr>
+                <td>{{p.nome}}</td>
+                <td>{{p.referencia}}</td>
+                <td>{{p.categoria}}</td>
+            </tr>
+        {%endif%}
+    {%endfor%}
+    </tbody>
+    </table>
+    {%endblock row%}
